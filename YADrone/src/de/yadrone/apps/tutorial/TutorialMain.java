@@ -18,12 +18,12 @@ public class TutorialMain
 		{
 			// Tutorial Section 1
 			drone = new ARDrone();
-			drone.addExceptionListener(new IExceptionListener() {
-				public void exeptionOccurred(ARDroneException exc)
-				{
-					exc.printStackTrace();
-				}
-			});
+//			drone.addExceptionListener(new IExceptionListener() {
+//				public void exeptionOccurred(ARDroneException exc)
+//				{
+//					exc.printStackTrace();
+//				}
+//			});
 			
 			drone.start();
 			
@@ -31,12 +31,12 @@ public class TutorialMain
 			new TutorialAttitudeListener(drone);
 			
 			// Tutorial Section 3
-//			new TutorialVideoListener(drone);
+			new TutorialVideoListener(drone);
 			
 			// Tutorial Section 4
-//			TutorialCommander commander = new TutorialCommander(drone);
-//			commander.animateLEDs();
-//			commander.takeOffAndLand();
+			TutorialCommander commander = new TutorialCommander(drone);
+			commander.animateLEDs();
+			commander.takeOffAndLand();
 //			commander.leftRightForwardBackward();
 		}
 		catch (Exception exc)
@@ -45,8 +45,8 @@ public class TutorialMain
 		}
 		finally
 		{
-			if (drone != null)
-				drone.stop();
+//			if (drone != null)
+//				drone.stop();
 
 			System.exit(0);
 		}

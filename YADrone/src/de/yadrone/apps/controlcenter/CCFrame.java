@@ -15,12 +15,10 @@ import javax.swing.UIManager;
 import de.yadrone.apps.controlcenter.plugins.pluginmanager.PluginManager;
 import de.yadrone.base.ARDrone;
 
-public class CCFrame extends JFrame
-{
+public class CCFrame extends JFrame {
 	private ARDrone drone;
 	
-	public CCFrame(ARDrone ardrone)
-	{
+	public CCFrame(ARDrone ardrone) {
 		super("YADrone Control Center");
 		
 		setSize(1024, 768);
@@ -40,8 +38,7 @@ public class CCFrame extends JFrame
             public void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 
-                if (originalImage == null)
-                { // called only once
+                if (originalImage == null) { // called only once
 	                ImageIcon icon = new ImageIcon(CCFrame.class.getResource("img/desktop.jpg"));
 	        		originalImage = icon.getImage();
 	        		scaledImage = originalImage;
