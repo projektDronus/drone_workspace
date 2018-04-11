@@ -8,8 +8,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 
 
-public class YADroneControlCenter
-{	
+public class YADroneControlCenter {
 	private ARDrone ardrone=null;
 	
 	public YADroneControlCenter(){
@@ -17,33 +16,14 @@ public class YADroneControlCenter
 	}
 	
 	private void initialize(){
-		try
-		{
+		try {
 			ardrone = new ARDrone();
 			System.out.println("Connect drone controller");
 			ardrone.start();
 
-//			ardrone.getVideoManager().addImageListener(new ImageListener() {
-//				private File outputfile;
-//				private int count = 0;
-//				@Override
-//				public void imageUpdated(BufferedImage image) {
-//					System.out.println("Modtog frame");
-//					outputfile = new File("video/"+count+".jpg");
-//					try {
-//						ImageIO.write(image, "jpg", outputfile);
-//					} catch (Exception e){
-//						e.printStackTrace();
-//					}
-//					count ++;
-//				}
-//			});
-
 			
 			new CCFrame(ardrone);
-		}
-		catch(Exception exc)
-		{
+		} catch(Exception exc) {
 			exc.printStackTrace();
 			
 			if (ardrone != null)

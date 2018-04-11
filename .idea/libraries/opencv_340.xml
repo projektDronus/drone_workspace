@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="opencv-340">
+    <CLASSES>
+      <root url="jar:///usr/local/Cellar/opencv/3.4.0_1/share/OpenCV/java/opencv-340.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <NATIVE>
+      <root url="file:///usr/local/Cellar/opencv/3.4.0_1/share/OpenCV/java" />
+    </NATIVE>
+    <SOURCES>
+      <root url="jar:///usr/local/Cellar/opencv/3.4.0_1/share/OpenCV/java/opencv-340.jar!/" />
+    </SOURCES>
+  </library>
+</component>
