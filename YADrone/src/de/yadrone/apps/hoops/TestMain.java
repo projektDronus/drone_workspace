@@ -2,6 +2,7 @@ package de.yadrone.apps.hoops;
 
 import de.yadrone.base.ARDrone;
 import de.yadrone.base.IARDrone;
+import de.yadrone.base.command.VideoCodec;
 import de.yadrone.base.exception.ARDroneException;
 import de.yadrone.base.exception.IExceptionListener;
 import de.yadrone.base.video.ImageListener;
@@ -52,12 +53,18 @@ public class TestMain extends Application{
         try {
             // Forbindelse blev oprettet
             drone = new ARDrone();
+
             TestController controller = new TestController(drone);
             primaryScene.setOnKeyPressed(controller);
             primaryScene.setOnKeyReleased(controller);
 
 
             drone.start();
+
+            // Prøv med et større billede
+            drone.getCommandManager().setVideoCodec(VideoCodec.H264_720P);
+            drone.getVideoManager().reinitialize();
+
             drone.addExceptionListener(new IExceptionListener() {
                 public void exeptionOccurred(ARDroneException exc) {
                     exc.printStackTrace();
