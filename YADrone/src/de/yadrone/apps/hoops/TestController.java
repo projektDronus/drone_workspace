@@ -3,7 +3,9 @@ package de.yadrone.apps.hoops;
 import de.yadrone.base.IARDrone;
 import de.yadrone.base.command.CommandManager;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
+import javafx.event.EventType;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
@@ -29,13 +31,18 @@ public class TestController implements EventHandler<KeyEvent> {
 //        }
 
         System.out.println(event.getCode().getName());
-        if (event.getCode() == KeyCode.ENTER) {
-            autoControl();
-            
-        } else {
-            control(event.getCode());
+
+        if (event.getEventType() == KeyEvent.KEY_PRESSED){
+            if (event.getCode() == KeyCode.ENTER) {
+                autoControl();
+
+            } else {
+                control(event.getCode());
+            }
+        } else if (event.getEventType() == KeyEvent.KEY_RELEASED){
+            cmd.hover()
         }
-        cmd.hover().doFor(actionTime/2);
+
     }
 
     private long actionTime = 1000/10;
@@ -54,61 +61,61 @@ public class TestController implements EventHandler<KeyEvent> {
                 break;
             case LEFT:
                 if (shiftflag) {
-                    cmd.spinLeft(speed).doFor(actionTime);
+                    cmd.spinLeft(speed);
                 } else {
-                    cmd.goLeft(speed).doFor(actionTime);
+                    cmd.goLeft(speed);
                 }
                 break;
             case RIGHT:
                 if (shiftflag) {
-                    cmd.spinRight(speed).doFor(actionTime);
+                    cmd.spinRight(speed);
                 } else {
-                    cmd.goRight(speed).doFor(actionTime);
+                    cmd.goRight(speed);
                 }
                 break;
             case UP:
                 if (shiftflag) {
-                    cmd.up(speed).doFor(actionTime);
+                    cmd.up(speed);
                 } else {
-                    cmd.forward(speed).doFor(actionTime);
+                    cmd.forward(speed);
                 }
                 break;
             case DOWN:
                 if (shiftflag) {
-                    cmd.down(speed).doFor(actionTime);
+                    cmd.down(speed);
                 } else {
-                    cmd.backward(speed).doFor(actionTime);
+                    cmd.backward(speed);
                 }
                 break;
             case R:
-                cmd.spinRight(speed).doFor(actionTime);
+                cmd.spinRight(speed);
                 break;
             case L:
-                cmd.spinLeft(speed).doFor(actionTime);
+                cmd.spinLeft(speed);
                 break;
             case U:
-                cmd.up(speed).doFor(actionTime);
+                cmd.up(speed);
                 break;
             case D:
-                cmd.down(speed).doFor(actionTime);
+                cmd.down(speed);
                 break;
             case E:
                 drone.reset();
                 break;
             case MINUS: // Plus
                 speed++;
-                System.out.println(drone.getSpeed());
+                System.out.println("Speed is: "+drone.getSpeed());
                 break;
             case EQUALS: // knap til højre for plus
                 speed--;
-                System.out.println(drone.getSpeed());
+                System.out.println("Speed is: "+drone.getSpeed());
                 break;
             case SHIFT:
                 shiftflag = !shiftflag;
                 System.out.println(shiftflag);
                 break;
             case H:
-                cmd.hover().doFor(actionTime);
+                cmd.hover();
         }
     }
 

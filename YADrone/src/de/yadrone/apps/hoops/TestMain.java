@@ -54,6 +54,7 @@ public class TestMain extends Application{
             drone = new ARDrone();
             TestController controller = new TestController(drone);
             primaryScene.setOnKeyPressed(controller);
+            primaryScene.setOnKeyReleased(controller);
 
 
             drone.start();
