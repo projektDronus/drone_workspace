@@ -2,6 +2,7 @@ package de.yadrone.apps.hoops;
 
 import de.yadrone.base.IARDrone;
 import de.yadrone.base.command.CommandManager;
+import de.yadrone.base.command.VideoCodec;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -40,7 +41,7 @@ public class TestController implements EventHandler<KeyEvent> {
                 control(event.getCode());
             }
         } else if (event.getEventType() == KeyEvent.KEY_RELEASED){
-            cmd.hover()
+            cmd.hover();
         }
 
     }
@@ -116,6 +117,14 @@ public class TestController implements EventHandler<KeyEvent> {
                 break;
             case H:
                 cmd.hover();
+            case Z:
+                drone.getCommandManager().setVideoCodec(VideoCodec.H264_720P);
+                drone.getVideoManager().reinitialize();
+                break;
+            case Q:
+                drone.getCommandManager().setVideoCodec(VideoCodec.H264_360P);
+                drone.getVideoManager().reinitialize();
+                break;
         }
     }
 
