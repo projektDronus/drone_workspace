@@ -21,6 +21,8 @@ import org.opencv.core.Core;
 
 import java.awt.image.BufferedImage;
 import java.util.concurrent.TimeUnit;
+import java.io.*;
+import javax.imageio.ImageIO;
 
 public class TestMain extends Application{
     public static void main(String[] args){
@@ -40,7 +42,7 @@ public class TestMain extends Application{
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("layout.fxml"));
         primaryStage.setTitle("billede");
-        Scene primaryScene = new Scene(root, 640, 500);
+        Scene primaryScene = new Scene(root, 1280, 720);
         primaryStage.setScene(primaryScene);
         primaryStage.show();
 
@@ -62,8 +64,8 @@ public class TestMain extends Application{
             drone.start();
 
             // Prøv med et større billede
-            drone.getCommandManager().setVideoCodec(VideoCodec.H264_720P);
-            drone.getVideoManager().reinitialize();
+            //drone.getCommandManager().setVideoCodec(VideoCodec.H264_720P);
+            //drone.getVideoManager().reinitialize();
 
             drone.addExceptionListener(new IExceptionListener() {
                 public void exeptionOccurred(ARDroneException exc) {
@@ -82,6 +84,24 @@ public class TestMain extends Application{
                     //System.out.println(count);
                 }
             });
+
+//            drone.getVideoManager().addImageListener(new ImageListener() {
+//                int count = 0;
+//                BufferedImage drawImage;
+//
+//                @Override
+//                public void imageUpdated(BufferedImage image) {
+//                    try {
+//                        File outputfile = new File("video/"+count+".jpg");
+//                        ImageIO.write(image, "jpg", outputfile);
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
+//                    imgview.setImage(SwingFXUtils.toFXImage(image, null));
+//                    count++;
+//                    System.out.println(count);
+//                }
+//            });
 
         } catch (Exception exc) {
             //Forbindelse blev ikke oprettet
